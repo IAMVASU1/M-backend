@@ -14,7 +14,9 @@ export const authRouter = Router();
 authRouter.post("/auth/request-otp", async (req, res, next) => {
   try {
     const body = z.object({ email: z.string().email() }).parse(req.body);
+    console.log(`[auth] OTP requested for email: ${body.email}`);
     const otp = createOtpForEmail(body.email);
+    console.log(`[auth] OTP created, attempting to send email...`);
     const mailInfo = await sendOtpEmail({ to: otp.email, code: otp.code });
     const sentTo = Array.isArray(mailInfo?.accepted) && mailInfo.accepted.length
       ? String(mailInfo.accepted[0]).toLowerCase()
@@ -27,6 +29,7 @@ authRouter.post("/auth/request-otp", async (req, res, next) => {
       expires_at: new Date(otp.expiresAt).toISOString(),
     });
   } catch (e) {
+    console.error(`[auth] Error in request-otp:`, e.message);
     next(e);
   }
 });
