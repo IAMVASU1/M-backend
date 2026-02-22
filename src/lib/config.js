@@ -23,6 +23,11 @@ export const config = {
   smtpFrom: process.env.SMTP_FROM || "",
 };
 
+// if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
+//   throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env.");
+// }
 if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
+  // temporarily log all available environment variable names to see what Railway passed
+  console.log("Available environment variables in Railway:", Object.keys(process.env));
   throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env.");
 }
