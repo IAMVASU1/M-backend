@@ -26,6 +26,8 @@ export const config = {
 // if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
 //   throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env.");
 // }
+console.log("TEST_VAR", process.env.TEST_VAR);
+
 console.log("ENV check:", {
   SUPABASE_URL: process.env.SUPABASE_URL,
   HAS_SERVICE_ROLE: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
