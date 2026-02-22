@@ -26,6 +26,13 @@ export const config = {
 // if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
 //   throw new Error("Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY in env.");
 // }
+console.log("ENV check:", {
+  SUPABASE_URL: process.env.SUPABASE_URL,
+  HAS_SERVICE_ROLE: !!process.env.SUPABASE_SERVICE_ROLE_KEY,
+  SERVICE_NAME: process.env.RAILWAY_SERVICE_NAME,
+  ENV_NAME: process.env.RAILWAY_ENVIRONMENT_NAME,
+});
+
 if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
   // temporarily log all available environment variable names to see what Railway passed
   console.log("Available environment variables in Railway:", Object.keys(process.env));
