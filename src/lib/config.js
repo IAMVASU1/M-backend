@@ -15,8 +15,6 @@ export const config = {
   otpResendCooldownSeconds: Number(process.env.OTP_RESEND_COOLDOWN_SECONDS || 60),
   otpMaxAttempts: Number(process.env.OTP_MAX_ATTEMPTS || 5),
   sessionTtlSeconds: Number(process.env.SESSION_TTL_SECONDS || 60 * 60 * 24 * 30),
-  resendApiKey: process.env.RESEND_API_KEY || "",
-  resendFromEmail: process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev",
 };
 
 if (!config.supabaseUrl || !config.supabaseServiceRoleKey) {
